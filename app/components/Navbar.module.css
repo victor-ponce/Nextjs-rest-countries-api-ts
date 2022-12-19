@@ -1,0 +1,26 @@
+/* ********************* NAVBAR  **************************/
+.navbar {
+  background-color: var(--color-bg-secondary);
+  box-shadow: var(--box-shadow);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-dark-mode {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  outline: none;
+  transition: 0.3s;
+  
+}
+
+.btn-dark-mode:hover {
+  opacity: 0.6;
+}

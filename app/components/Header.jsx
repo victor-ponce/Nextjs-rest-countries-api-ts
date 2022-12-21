@@ -1,11 +1,11 @@
 export function Header () {
   return (
-    <header class='container filter-content margin-y'>
-      <form class='form-search' id='form'>
-        <i class='fa-solid fa-magnifying-glass' />
+    <header className='container filter-content margin-y'>
+      <form className='form-search' id='form'>
+        <i className='fa-solid fa-magnifying-glass' />
         <input type='text' placeholder='Enter Country' id='inputForm' />
       </form>
-      <div class='custom-select'>
+      <div className='custom-select'>
         <select>
           <option value=''>Filter by region</option>
           <option value=''>All</option>

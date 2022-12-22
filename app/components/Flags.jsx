@@ -1,4 +1,4 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 
 export function Flags () {
   return (
@@ -15,7 +15,6 @@ export function Flags () {
           <p>
             <b>Capital:</b>
           </p>
-          <Link href='/about'> Details </Link>
         </div>
       </article>
     </main>

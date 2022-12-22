@@ -1,6 +1,7 @@
+/* import Link from 'next/link' */
 export default function HomaPage () {
   return (
-    <header className='container filter-content margin-y'>
+    <><header className='container filter-content margin-y'>
       <form className='form-search' id='form'>
         <i className='fa-solid fa-magnifying-glass' />
         <input type='text' placeholder='Enter Country' id='inputForm' />
@@ -16,6 +17,24 @@ export default function HomaPage () {
           <option value='Oceania'>Oceania</option>
         </select>
       </div>
-    </header>
+      </header>
+      <main className='container grid' id='flags'>
+        <article className='card'>
+          <p>Una imagen va aqui</p>
+          <div className='cardContent'>
+            <p>
+              <b>Population:</b>
+            </p>
+            <p>
+              <b>Region:</b>
+            </p>
+            <p>
+              <b>Capital:</b>
+            </p>
+            {/* <Link href='/details'>Details</Link> */}
+          </div>
+        </article>
+      </main>
+    </>
   )
 }

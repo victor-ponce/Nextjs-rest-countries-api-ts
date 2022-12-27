@@ -1,25 +1,38 @@
 /* import Link from 'next/link' */
-export default function HomaPage () {
+'use client'
+import { Header } from './components/Header'
+import { SearchBox } from './components/searchBox'
+import React, { useState } from 'react'
+import { Countries } from './components/Countries'
+
+export default function HomaPage (data) {
+  console.log(data)
+  const countriesData = data
+
+  const [country] = useState(countriesData)
+  const [searchField, setSearchField] = useState('')
+  const [region, setRegion] = useState('')
+
+  // Search and searhByRegion Function >>
+  const filterCountries = country.filter(country =>
+    searchField
+      ? country.name.common
+        .toLowerCase()
+        .includes(searchField.toLocaleLowerCase())
+      : country.region.toLowerCase().includes(region.toLocaleLowerCase())
+  )
+  // for smooth scroll
+
   return (
-    <><header className='container filter-content margin-y'>
-      <form className='form-search' id='form'>
-        <i className='fa-solid fa-magnifying-glass' />
-        <input type='text' placeholder='Enter Country' id='inputForm' />
-      </form>
-      <div className='custom-select'>
-        <select>
-          <option value=''>Filter by region</option>
-          <option value=''>All</option>
-          <option value='Africa'>Africa</option>
-          <option value='Americas'>America</option>
-          <option value='Asia'>Asia</option>
-          <option value='Europe'>Europe</option>
-          <option value='Oceania'>Oceania</option>
-        </select>
-      </div>
-      </header>
+    <><Header />
       <main className='container grid' id='flags'>
-        <article className='card'>
+        <SearchBox
+          apiData={data}
+          search={e => setSearchField(e.target.value)}
+          searchByRegion={e => setRegion(e.target.value)}
+        />
+        <Countries countries={filterCountries} />
+        {/* <article className='card'>
           <p>Una imagen va aqui</p>
           <div className='cardContent'>
             <p>
@@ -31,10 +44,20 @@ export default function HomaPage () {
             <p>
               <b>Capital:</b>
             </p>
-            {/* <Link href='/details'>Details</Link> */}
+            /* <Link href='/details'>Details</Link>
           </div>
-        </article>
+        </article> */}
+
       </main>
     </>
   )
+}
+
+export async function getServerSideProps () {
+  const res = await fetch('https://restcountries.com/v3.1/all')
+  const data = await res.json()
+
+  return {
+    props: { data }
+  }
 }
